@@ -1,0 +1,323 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+.chord-selector {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.chord-selector label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+}
+
+#chord-input {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    transition: border-color 0.3s ease;
+    min-width: 300px;
+    width: 100%;
+    max-width: 500px;
+    resize: vertical;
+    font-family: 'Courier New', monospace;
+    line-height: 1.4;
+}
+
+#chord-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.chord-examples {
+    margin-top: 10px;
+}
+
+.chord-examples p {
+    font-size: 0.9em;
+    color: #888;
+    font-style: italic;
+    margin: 0;
+}
+
+.chord-info {
+    text-align: center;
+    margin-bottom: 40px;
+    min-height: 60px;
+}
+
+#chord-name {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#chord-notes {
+    color: #666;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.piano-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 30px;
+    padding: 20px 0;
+}
+
+.piano-row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.row-label {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #555;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.piano-row-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.piano-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+.chord-label {
+    text-align: center;
+}
+
+.chord-label h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 0;
+    font-weight: bold;
+}
+
+.chord-label p {
+    font-size: 1em;
+    color: #666;
+    margin: 5px 0 0 0;
+    font-style: italic;
+}
+
+
+.piano {
+    display: flex;
+    position: relative;
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.key {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    user-select: none;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border: 1px solid #ccc;
+}
+
+.key.white {
+    width: 40px;
+    height: 200px;
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%);
+    margin: 0 1px;
+    border-radius: 0 0 5px 5px;
+    z-index: 1;
+}
+
+.key.black {
+    width: 25px;
+    height: 130px;
+    background: linear-gradient(to bottom, #333 0%, #111 100%);
+    position: absolute;
+    z-index: 2;
+    border-radius: 0 0 3px 3px;
+    margin-left: -12.5px;
+}
+
+/* Black key positioning for C2-D3 range */
+/* White keys: C(0-41), D(42-83), E(84-125), F(126-167), G(168-209), A(210-251), B(252-293), C(294-335), D(336-377) */
+/* Black keys positioned slightly right of white key boundaries for better visual alignment */
+.key.black:nth-of-type(2) { left: 58px; }   /* C# slightly right of C-D boundary */
+.key.black:nth-of-type(4) { left: 100px; }  /* D# slightly right of D-E boundary */
+.key.black:nth-of-type(7) { left: 184px; }  /* F# slightly right of F-G boundary */
+.key.black:nth-of-type(9) { left: 226px; }  /* G# slightly right of G-A boundary */
+.key.black:nth-of-type(11) { left: 268px; } /* A# slightly right of A-B boundary */
+.key.black:nth-of-type(14) { left: 352px; } /* C# slightly right of C-D boundary */
+
+.key:hover {
+    transform: translateY(2px);
+}
+
+.key.white:hover {
+    background: linear-gradient(to bottom, #f0f0f0 0%, #e8e8e8 100%);
+}
+
+.key.black:hover {
+    background: linear-gradient(to bottom, #444 0%, #222 100%);
+}
+
+.key.active {
+    transform: translateY(3px);
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.key.white.active {
+    background: linear-gradient(to bottom, #667eea 0%, #5a6fd8 100%);
+    color: white;
+}
+
+.key.black.active {
+    background: linear-gradient(to bottom, #764ba2 0%, #667eea 100%);
+}
+
+.note-label {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+    margin-bottom: 10px;
+    color: #333;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.key.black .note-label {
+    color: #fff;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.key.active .note-label {
+    color: white;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.instructions {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 2em;
+    }
+    
+    .piano-container {
+        gap: 25px;
+    }
+    
+    .piano-row {
+        gap: 15px;
+    }
+    
+    .piano-row-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .piano-wrapper {
+        gap: 10px;
+    }
+    
+    .chord-label h3 {
+        font-size: 1.3em;
+    }
+    
+    .chord-label p {
+        font-size: 0.9em;
+    }
+    
+    .row-label {
+        font-size: 1.1em;
+    }
+    
+    .piano {
+        transform: scale(0.8);
+        transform-origin: center;
+    }
+    
+    .key.white {
+        width: 35px;
+        height: 180px;
+    }
+    
+    .key.black {
+        width: 22px;
+        height: 120px;
+    }
+    
+    /* 黒鍵の位置をモバイル用に再調整 */
+    .key.black:nth-of-type(2) { left: 46px; }
+    .key.black:nth-of-type(4) { left: 80px; }
+    .key.black:nth-of-type(7) { left: 147px; }
+    .key.black:nth-of-type(9) { left: 181px; }
+    .key.black:nth-of-type(11) { left: 214px; }
+    .key.black:nth-of-type(14) { left: 282px; }
+}
