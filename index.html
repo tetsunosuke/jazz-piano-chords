@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ジャズピアノコード</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>ジャズピアノコード</h1>
+        <p>ジャズピアノのコードを学習しましょう</p>
+        
+        <div class="chord-selector">
+            <label for="chord-select">コードを選択:</label>
+            <select id="chord-select">
+                <option value="">-- コードを選択してください --</option>
+                <option value="CM7">CM7</option>
+                <option value="Dm7">Dm7</option>
+                <option value="Em7">Em7</option>
+                <option value="FM7">FM7</option>
+                <option value="G7">G7</option>
+                <option value="Am7">Am7</option>
+                <option value="Bm7b5">Bm7b5</option>
+            </select>
+        </div>
+
+        <div class="chord-info">
+            <h2 id="chord-name"></h2>
+            <p id="chord-notes"></p>
+        </div>
+
+        <div class="piano-container">
+            <div class="piano">
+                <!-- C octave -->
+                <div class="key white" data-note="C4">
+                    <span class="note-label">C</span>
+                </div>
+                <div class="key black" data-note="C#4">
+                    <span class="note-label">C#</span>
+                </div>
+                <div class="key white" data-note="D4">
+                    <span class="note-label">D</span>
+                </div>
+                <div class="key black" data-note="D#4">
+                    <span class="note-label">D#</span>
+                </div>
+                <div class="key white" data-note="E4">
+                    <span class="note-label">E</span>
+                </div>
+                <div class="key white" data-note="F4">
+                    <span class="note-label">F</span>
+                </div>
+                <div class="key black" data-note="F#4">
+                    <span class="note-label">F#</span>
+                </div>
+                <div class="key white" data-note="G4">
+                    <span class="note-label">G</span>
+                </div>
+                <div class="key black" data-note="G#4">
+                    <span class="note-label">G#</span>
+                </div>
+                <div class="key white" data-note="A4">
+                    <span class="note-label">A</span>
+                </div>
+                <div class="key black" data-note="A#4">
+                    <span class="note-label">A#</span>
+                </div>
+                <div class="key white" data-note="B4">
+                    <span class="note-label">B</span>
+                </div>
+                
+                <!-- Next octave -->
+                <div class="key white" data-note="C5">
+                    <span class="note-label">C</span>
+                </div>
+                <div class="key black" data-note="C#5">
+                    <span class="note-label">C#</span>
+                </div>
+                <div class="key white" data-note="D5">
+                    <span class="note-label">D</span>
+                </div>
+                <div class="key black" data-note="D#5">
+                    <span class="note-label">D#</span>
+                </div>
+                <div class="key white" data-note="E5">
+                    <span class="note-label">E</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <p>上記のドロップダウンからコードを選択すると、ピアノ鍵盤上でそのコードの構成音がハイライトされます。</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
