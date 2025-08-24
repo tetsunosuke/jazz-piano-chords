@@ -14,7 +14,48 @@
             <textarea id="chord-input" rows="4" placeholder="例:
 CM7, Dm7, G7
 FM7, Bb7, EbM7
-Am7, D7, GM7">Cm7, F7, BbM7, EbM7</textarea>
+Am7, D7, GM7"></textarea>
+            
+            <!-- スマートフォン向け簡易入力ボタン -->
+            <div class="input-buttons" id="input-buttons">
+                <div class="button-section">
+                    <h3>音名</h3>
+                    <div class="button-grid">
+                        <button class="input-btn note-btn" data-value="C">C</button>
+                        <button class="input-btn note-btn" data-value="D">D</button>
+                        <button class="input-btn note-btn" data-value="E">E</button>
+                        <button class="input-btn note-btn" data-value="F">F</button>
+                        <button class="input-btn note-btn" data-value="G">G</button>
+                        <button class="input-btn note-btn" data-value="A">A</button>
+                        <button class="input-btn note-btn" data-value="B">B</button>
+                    </div>
+                </div>
+                
+                <div class="button-section">
+                    <h3>記号・操作</h3>
+                    <div class="button-grid">
+                        <button class="input-btn symbol-btn" data-value="b">♭</button>
+                        <button class="input-btn symbol-btn" data-value="#">♯</button>
+                        <button class="input-btn action-btn" data-action="space">[空白]</button>
+                        <button class="input-btn action-btn" data-action="comma">[,]</button>
+                        <button class="input-btn action-btn" data-action="newline">[改行]</button>
+                        <button class="input-btn preset-btn" data-preset="autumn">Autumn Leaves</button>
+                    </div>
+                </div>
+                
+                <div class="button-section">
+                    <h3>コードタイプ</h3>
+                    <div class="button-grid">
+                        <button class="input-btn type-btn" data-value="M7">M7</button>
+                        <button class="input-btn type-btn" data-value="m7">m7</button>
+                        <button class="input-btn type-btn" data-value="7">7</button>
+                        <button class="input-btn type-btn" data-value="m7b5">m7♭5</button>
+                        <button class="input-btn type-btn" data-value="dim7">dim7</button>
+                        <button class="input-btn type-btn" data-value="alt">alt</button>
+                    </div>
+                </div>
+            </div>
+            
             <div class="chord-examples">
                 <p>カンマ区切りまたは改行で複数のコードを入力できます</p>
                 <p>改行すると、鍵盤も行ごとに折り返して表示されます</p>

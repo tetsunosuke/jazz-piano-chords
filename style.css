@@ -79,6 +79,111 @@ p {
     margin: 0;
 }
 
+/* 簡易入力ボタン */
+.input-buttons {
+    margin: 15px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.button-section {
+    margin-bottom: 15px;
+}
+
+.button-section:last-child {
+    margin-bottom: 0;
+}
+
+.button-section h3 {
+    font-size: 0.9em;
+    color: #495057;
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.button-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+}
+
+.input-btn {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    min-width: 40px;
+    text-align: center;
+}
+
+.note-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.note-btn:hover {
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #5a6fd8 0%, #6a4c93 100%);
+}
+
+.symbol-btn {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+    color: #2d3436;
+}
+
+.symbol-btn:hover {
+    background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+    color: white;
+}
+
+.type-btn {
+    background: linear-gradient(135deg, #81ecec 0%, #74b9ff 100%);
+    color: #2d3436;
+}
+
+.type-btn:hover {
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    color: white;
+}
+
+.action-btn {
+    background: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%);
+    color: #2d3436;
+    font-size: 0.75em;
+    padding: 6px 8px;
+}
+
+.action-btn:hover {
+    background: linear-gradient(135deg, #e84393 0%, #e17055 100%);
+    color: white;
+}
+
+.preset-btn {
+    background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+    color: white;
+    font-size: 0.75em;
+    padding: 6px 10px;
+    min-width: 80px;
+}
+
+.preset-btn:hover {
+    background: linear-gradient(135deg, #00a085 0%, #00cec9 100%);
+    transform: translateY(-1px);
+}
+
+.input-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 
 .piano-container {
     display: flex;
@@ -258,32 +363,199 @@ p {
     margin-top: 20px;
 }
 
+/* タブレット・大画面スマートフォン対応 */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
     .container {
-        padding: 20px;
-        margin: 10px;
+        padding: 15px;
+        margin: 0;
+        border-radius: 10px;
     }
     
     h1 {
         font-size: 2em;
+        margin-bottom: 8px;
+    }
+    
+    p {
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+    
+    .chord-selector {
+        margin-bottom: 20px;
+    }
+    
+    .chord-selector label {
+        font-size: 1em;
+        margin-bottom: 8px;
+    }
+    
+    #chord-input {
+        font-size: 14px;
+        padding: 10px;
+        min-width: 280px;
+        min-height: 80px;
+    }
+    
+    .chord-examples p {
+        font-size: 0.85em;
+    }
+    
+    /* 簡易入力ボタン - タブレット対応 */
+    .input-buttons {
+        margin: 12px 0;
+        padding: 12px;
+    }
+    
+    .button-section h3 {
+        font-size: 0.85em;
+        margin-bottom: 6px;
+    }
+    
+    .input-btn {
+        font-size: 0.8em;
+        padding: 6px 10px;
+        min-width: 35px;
+    }
+    
+    .action-btn {
+        font-size: 0.7em;
+        padding: 5px 7px;
     }
     
     .piano-container {
-        gap: 25px;
-    }
-    
-    .piano-row {
-        gap: 15px;
+        gap: 20px;
+        padding: 15px 0;
     }
     
     .piano-row-container {
         flex-direction: column;
         align-items: center;
-        gap: 15px;
+        gap: 12px;
+        padding: 5px 0;
     }
     
     .piano-wrapper {
-        gap: 10px;
+        gap: 6px;
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .chord-label h3 {
+        font-size: 1.1em;
+        margin-bottom: 3px;
+    }
+    
+    .chord-label p {
+        font-size: 0.75em;
+        line-height: 1.2;
+    }
+    
+    .row-label {
+        font-size: 1.1em;
+        margin-bottom: 8px;
+    }
+    
+    .piano {
+        padding: 6px;
+        border-radius: 6px;
+        transform: scale(0.95);
+        transform-origin: center;
+    }
+    
+    .key.white {
+        width: 20px;
+        height: 100px;
+        margin: 0 0.4px;
+    }
+    
+    .key.black {
+        width: 12px;
+        height: 65px;
+        margin-left: -6px;
+    }
+    
+    .note-label {
+        font-size: 7px;
+        padding: 1px;
+        margin-bottom: 3px;
+    }
+    
+    /* モバイル用黒鍵位置調整 */
+    .key.black:nth-child(2) { left: 28px; }   /* C# */
+    .key.black:nth-child(4) { left: 48px; }   /* D# */
+    .key.black:nth-child(7) { left: 88px; }   /* F# */
+    .key.black:nth-child(9) { left: 108px; }  /* G# */
+    .key.black:nth-child(11) { left: 128px; } /* A# */
+    .key.black:nth-child(14) { left: 168px; } /* C# */
+    .key.black:nth-child(16) { left: 188px; } /* D# */
+}
+
+/* 小画面スマートフォン対応 */
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
+    .container {
+        padding: 12px;
+        border-radius: 8px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 6px;
+    }
+    
+    p {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
+    
+    #chord-input {
+        font-size: 14px;
+        padding: 8px;
+        min-width: 250px;
+        min-height: 70px;
+    }
+    
+    /* 簡易入力ボタン - 小画面対応 */
+    .input-buttons {
+        margin: 10px 0;
+        padding: 10px;
+    }
+    
+    .button-section h3 {
+        font-size: 0.8em;
+        margin-bottom: 5px;
+    }
+    
+    .button-grid {
+        gap: 4px;
+    }
+    
+    .input-btn {
+        font-size: 0.75em;
+        padding: 5px 8px;
+        min-width: 30px;
+    }
+    
+    .action-btn {
+        font-size: 0.65em;
+        padding: 4px 6px;
+    }
+    
+    .piano-container {
+        gap: 15px;
+        padding: 10px 0;
+    }
+    
+    .piano-wrapper {
+        max-width: 280px;
     }
     
     .chord-label h3 {
@@ -294,38 +566,33 @@ p {
         font-size: 0.7em;
     }
     
-    .row-label {
-        font-size: 1em;
-    }
-    
     .piano {
-        transform: scale(0.9);
-        transform-origin: center;
+        padding: 4px;
+        transform: scale(0.85);
     }
     
     .key.white {
-        width: 20px;
-        height: 100px;
+        width: 18px;
+        height: 85px;
     }
     
     .key.black {
-        width: 12px;
-        height: 65px;
+        width: 11px;
+        height: 55px;
+        margin-left: -5.5px;
     }
     
     .note-label {
-        font-size: 8px;
-        padding: 1px;
-        margin-bottom: 4px;
+        font-size: 6px;
+        margin-bottom: 2px;
     }
     
-    /* 黒鍵の位置をモバイル用に再調整（縮小サイズ対応） */
-    /* Mobile white keys: 20px width, positioned at 0, 21, 42, 63, 84, 105, 126, 147, 168px */
-    /* Black keys centered between adjacent white keys */
-    .key.black:nth-child(2) { left: 35.5px; } /* C# between C(0) and D(21) -> (0+21)/2 + 10-6 */
-    .key.black:nth-child(4) { left: 70.5px; } /* D# between D(21) and E(42) -> (21+42)/2 + 10-6 */
-    .key.black:nth-child(7) { left: 100.5px; } /* F# between F(63) and G(84) -> (63+84)/2 + 10-6 */
-    .key.black:nth-child(9) { left: 120.5px; }/* G# between G(84) and A(105) -> (84+105)/2 + 10-6 */
-    .key.black:nth-child(11) { left: 160.5px; }/* A# between A(105) and B(126) -> (105+126)/2 + 10-6 */
-    .key.black:nth-child(14) { left: 190.5px; }/* C# between C(147) and D(168) -> (147+168)/2 + 10-6 */
+    /* 小画面用黒鍵位置調整 */
+    .key.black:nth-child(2) { left: 25px; }   /* C# */
+    .key.black:nth-child(4) { left: 43px; }   /* D# */
+    .key.black:nth-child(7) { left: 79px; }   /* F# */
+    .key.black:nth-child(9) { left: 97px; }   /* G# */
+    .key.black:nth-child(11) { left: 115px; } /* A# */
+    .key.black:nth-child(14) { left: 151px; } /* C# */
+    .key.black:nth-child(16) { left: 169px; } /* D# */
 }

@@ -659,16 +659,82 @@ function handleKeyClick(event) {
     }, 150);
 }
 
+// 簡易入力ボタンの機能
+function initializeInputButtons() {
+    const inputButtons = document.querySelectorAll('.input-btn');
+    
+    inputButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            const value = button.getAttribute('data-value');
+            const action = button.getAttribute('data-action');
+            const preset = button.getAttribute('data-preset');
+            
+            // カーソル位置を取得
+            const cursorPos = chordInput.selectionStart;
+            const currentValue = chordInput.value;
+            
+            let newValue = currentValue;
+            let newCursorPos = cursorPos;
+            
+            if (preset) {
+                // プリセットコード進行の挿入
+                switch(preset) {
+                    case 'autumn':
+                        const autumnLeaves = `Cm7, F7, BbM7, EbM7
+Adim7, D7, Gm7, Gm7
+Adim7, D7, Gm7, Gm7
+Cm7, F7, BbM7, EbM7
+Adim7, D7, Gm7, GbM7, Fm7, E7
+Adim7, D7, Gm7, Gm7`;
+                        newValue = autumnLeaves;
+                        newCursorPos = autumnLeaves.length;
+                        break;
+                }
+            } else if (value) {
+                // 音名・記号・コードタイプの挿入
+                newValue = currentValue.slice(0, cursorPos) + value + currentValue.slice(cursorPos);
+                newCursorPos = cursorPos + value.length;
+            } else if (action) {
+                // アクション系ボタン
+                switch(action) {
+                    case 'space':
+                        newValue = currentValue.slice(0, cursorPos) + ' ' + currentValue.slice(cursorPos);
+                        newCursorPos = cursorPos + 1;
+                        break;
+                    case 'comma':
+                        newValue = currentValue.slice(0, cursorPos) + ', ' + currentValue.slice(cursorPos);
+                        newCursorPos = cursorPos + 2;
+                        break;
+                    case 'newline':
+                        newValue = currentValue.slice(0, cursorPos) + '\n' + currentValue.slice(cursorPos);
+                        newCursorPos = cursorPos + 1;
+                        break;
+                }
+            }
+            
+            // テキストエリアを更新
+            chordInput.value = newValue;
+            chordInput.setSelectionRange(newCursorPos, newCursorPos);
+            chordInput.focus();
+            
+            // コード表示を更新
+            processMultipleChords(newValue);
+        });
+    });
+}
+
 // イベントリスナーの設定
 chordInput.addEventListener('input', (event) => {
     const inputValue = event.target.value.trim();
-    highlightChord(inputValue);
+    processMultipleChords(inputValue);
 });
 
 chordInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         const inputValue = event.target.value.trim();
-        highlightChord(inputValue);
+        processMultipleChords(inputValue);
     }
 });
 
@@ -677,8 +743,13 @@ pianoKeys.forEach(key => {
     key.addEventListener('click', handleKeyClick);
 });
 
-// 初期状態でコード選択をリセット
+// 初期化
+initializeInputButtons();
 resetPiano();
+// 初期状態では空の状態から開始
+if (chordInput.value.trim()) {
+    processMultipleChords(chordInput.value);
+}
 
 
 // キーボードショートカット（オプション）
